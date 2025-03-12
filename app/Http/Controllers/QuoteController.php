@@ -8,18 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class QuoteController extends Controller
 {
-    /**
-     * Display a listing of the quotes.
-     */
+  
     public function index(Request $request)
     {
         $quotes=Quote::all();
         return response()->json([$quotes],200);
     }
 
-    /**
-     * Store a newly created quote.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -35,17 +30,12 @@ class QuoteController extends Controller
         ], 201);
     }
 
-    /**
-     * Display the specified quote.
-     */
     public function show(Quote $quote)
     {
         return response()->json($quote, 200);
     }
 
-    /**
-     * Update the specified quote.
-     */
+  
     public function update(Request $request, Quote $quote)
     {
         $validated = $request->validate([
@@ -62,9 +52,7 @@ class QuoteController extends Controller
         ], 200);
     }
 
-    /**
-     * Remove the specified quote.
-     */
+  
     public function destroy(Quote $quote)
     {
         $quote->delete();
@@ -74,18 +62,50 @@ class QuoteController extends Controller
         ], 200);
     }
 
-    /**
-     * Get random quotes.
-     */
-    public function random(Request $request)
+    public function random(Request $request, $count)
     {
-      
+    
+    
+        $quotes = Quote::inRandomOrder()->limit($count)->get();
+        foreach($quotes as $quote){
+            $quote->view_count++;
+            $quote->save();
+        }
+        return response()->json($quotes, 200);
     }
 
-    /**
-     * Get most popular quotes.
-     */
-    public function popular(Request $request)
-    {
+    
+    public function GetQuoteWithLength(Request $request, $length){
+
+    $quotes=Quote::all();
+            foreach($quotes as $quote){
+                if(str_word_count($quote->content) == $length){
+                    $matchedQuotes[] = $quote; 
+                }
+            }
+            if(empty($matchedQuotes)){
+                return response()->json([
+                    "message" => "There is no Quote with This Length"
+                ], 200);
+            }
+
+
+        return response()->json([$matchedQuotes],200);
+
     }
+    public function GetPopularQuote()
+    {
+        $quote = Quote::orderBy('view_count', 'desc')->first();
+        
+        if (!$quote) {
+            return response()->json([
+                "message" => "No quotes found"
+            ], 404);
+        }
+        
+        return response()->json([
+            "quote_most_popular" => $quote
+        ], 200);
+    }
+   
 }

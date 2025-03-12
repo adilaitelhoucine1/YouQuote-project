@@ -12,3 +12,6 @@ Route::get('/hello', function (Request $request) {
     return response()->json(['message'=>'tbnksnis ']);
 });
 Route::apiResource("quotes", QuoteController::class);
+Route::get('/quotes/random/{count}', [QuoteController::class, 'random']);
+Route::get('/quotes/GetQuoteWithLength/{length}', [QuoteController::class, 'GetQuoteWithLength']);
+Route::get('/Popular', [QuoteController::class, 'GetPopularQuote']);
