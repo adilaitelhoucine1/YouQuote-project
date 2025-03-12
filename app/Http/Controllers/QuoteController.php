@@ -22,7 +22,17 @@ class QuoteController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $validated = $request->validate([
+            'content' => 'required|string',
+            'author' => 'nullable|string|max:255',
+            'source' => 'nullable|string|max:255',
+        ]);
+        
+        $quote = Quote::create($validated);
+        
+        return response()->json([
+            "message" => "quote est bien cree . $quote->content"
+        ], 201);
     }
 
     /**
@@ -30,7 +40,7 @@ class QuoteController extends Controller
      */
     public function show(Quote $quote)
     {
-        
+        return response()->json($quote, 200);
     }
 
     /**
@@ -38,7 +48,18 @@ class QuoteController extends Controller
      */
     public function update(Request $request, Quote $quote)
     {
- 
+        $validated = $request->validate([
+            'content' => 'sometimes|required|string',
+            'author' => 'nullable|string|max:255',
+            'source' => 'nullable|string|max:255',
+        ]);
+        
+        $quote->update($validated);
+        
+        return response()->json([
+            "message" => "Quote updated successfully",
+            "quote" => $quote
+        ], 200);
     }
 
     /**
@@ -46,7 +67,11 @@ class QuoteController extends Controller
      */
     public function destroy(Quote $quote)
     {
-   
+        $quote->delete();
+        
+        return response()->json([
+            "message" => "Quote deleted successfully"
+        ], 200);
     }
 
     /**
@@ -54,6 +79,7 @@ class QuoteController extends Controller
      */
     public function random(Request $request)
     {
+      
     }
 
     /**
@@ -61,6 +87,5 @@ class QuoteController extends Controller
      */
     public function popular(Request $request)
     {
-     
     }
 }
