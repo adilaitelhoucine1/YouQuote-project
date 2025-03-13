@@ -32,6 +32,8 @@ class QuoteController extends Controller
 
     public function show(Quote $quote)
     {
+        $quote->increment('view_count');
+        $quote->save();
         return response()->json($quote, 200);
     }
 
@@ -67,10 +69,10 @@ class QuoteController extends Controller
     
     
         $quotes = Quote::inRandomOrder()->limit($count)->get();
-        foreach($quotes as $quote){
-            $quote->view_count++;
-            $quote->save();
-        }
+        // foreach($quotes as $quote){
+        //     $quote->view_count++;
+        //     $quote->save();
+        // }
         return response()->json($quotes, 200);
     }
 
