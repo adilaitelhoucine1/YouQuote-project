@@ -37,7 +37,7 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($validatedData)) {
-            return response()->json(['message' => 'Invalid login credentials'], 401);
+            return response()->json(['message' => 'Invalid login Infos'], 401);
         }
 
         $token = auth()->user()->createToken('auth_token')->plainTextToken;

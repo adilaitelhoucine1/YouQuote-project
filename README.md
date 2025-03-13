@@ -1,66 +1,199 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# YouQuote - Quote Management API
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://via.placeholder.com/200x200.png?text=YouQuote" alt="YouQuote Logo" width="200">
 </p>
 
-## About Laravel
+<p align="center">
+  <a href="#features"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"></a> href="#features"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"></a>
+  <a href="#license"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>  <a href="#license"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+  <a href="#built-with"><img src="https://img.shields.io/badge/framework-Laravel-red.svg" alt="Framework"></a>t-with"><img src="https://img.shields.io/badge/framework-Laravel-red.svg" alt="Framework"></a>
+</p></p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## About YouQuote## About YouQuote
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+YouQuote is a powerful API for managing quotes. Built with Laravel, YouQuote allows users to create, read, update, and delete quotes, as well as retrieve random quotes and filter quotes based on length. The API also tracks the popularity of most requested quotes and offers bonus features like image generation for popular quotes and secure user authentication.ows users to create, read, update, and delete quotes, as well as retrieve random quotes and filter quotes based on length. The API also tracks the popularity of most requested quotes and offers bonus features like image generation for popular quotes and secure user authentication.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+### Core Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Complete CRUD Operations**: Create, read, update, and delete quotes- **Complete CRUD Operations**: Create, read, update, and delete quotes
+- **Random Quote Generation**: Get one or multiple random quotes on demand
+- **Quote Filtering by Length**: Filter quotes based on word count- **Quote Filtering by Length**: Filter quotes based on word count
+- **Popularity Tracking**: Automatically track which quotes are most frequently requestedking**: Automatically track which quotes are most frequently requested
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Bonus Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Quote Image Generation**: Create beautiful images featuring popular quotes
+- **User Authentication**: Secure registration and login system allowing users to manage their own quotes- **User Authentication**: Secure registration and login system allowing users to manage their own quotes
 
-## Laravel Sponsors
+## Technology Stack## Technology Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Backend Framework**: Laravel- **Backend Framework**: Laravel
+- **Architecture**: Monolithic architecture for centralized management
+- **Database**: MySQL for storing quotes, tracking popularity, and user information- **Database**: MySQL for storing quotes, tracking popularity, and user information
+- **Image Generation**: Integration with Intervention Image library**: Integration with Intervention Image library
+- **Authentication**: Sanctum   for secure access- **Authentication**: Sanctum 
 
-### Premium Partners
+## Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+# Clone the repository
+git clone https://github.com/adilaitelhoucine1/youquote-project.git
+
+# Navigate to the project directory
+cd youquote-project
+
+# Install dependencies
+composer install
+
+# Copy environment file# Copy environment file
+cp .env.example .env .env
+
+# Generate application key
+php artisan key:generatephp artisan key:generate
+
+# Configure your database in .env# Configure your database in .env
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=youquote# DB_DATABASE=youquote
+# DB_USERNAME=root
+# DB_PASSWORD=# DB_PASSWORD=
+
+# Run migrations# Run migrations
+php artisan migrate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>  Made with ❤️ for quote enthusiasts everywhere<p align="center">---Project Link: [https://github.com/adilaitelhoucine1/youquote-project](https://github.com/adilaitelhoucine1/youquote-project)## ContactThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.## License5. Open a Pull Request4. Push to the branch (`git push origin feature/amazing-feature`)3. Commit your changes (`git commit -m 'Add some amazing feature'`)2. Create your feature branch (`git checkout -b feature/amazing-feature`)1. Fork the projectContributions are welcome! Please feel free to submit a Pull Request.## Contributing- [ ] Advanced filtering options- [ ] API rate limiting- [ ] User-specific quote management- [ ] User authentication- [ ] Image generation for quotes- [x] Popularity tracking- [x] Quote filtering by length- [x] Random quote generation- [x] Basic CRUD functionality## Development Roadmap| POST   | `/api/logout` | Logout user || POST   | `/api/login` | Login user || POST   | `/api/register` | Register a new user ||--------|----------|-------------|| Method | Endpoint | Description |## Authentication Endpoints| GET    | `/api/quotes/image/{id}` | Generate image for a quote || GET    | `/api/quotes/popular` | Get popular quotes || GET    | `/api/quotes/filter/length/{min}/{max}` | Filter quotes by word count || GET    | `/api/quotes/random/{count}` | Get multiple random quotes || GET    | `/api/quotes/random` | Get a random quote || DELETE | `/api/quotes/{id}` | Delete a quote || PUT    | `/api/quotes/{id}` | Update a quote || POST   | `/api/quotes` | Create a new quote || GET    | `/api/quotes/{id}` | Get a specific quote || GET    | `/api/quotes` | Get all quotes ||--------|----------|-------------|| Method | Endpoint | Description |## API Endpoints```php artisan serve# Start the development serverphp artisan db:seed# Seed the database with sample quotes (optional)# Seed the database with sample quotes (optional)
+php artisan db:seed
+
+# Start the development server
+php artisan serve
+```
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET    | `/api/quotes` | Get all quotes |
+| GET    | `/api/quotes/{id}` | Get a specific quote |
+| POST   | `/api/quotes` | Create a new quote |
+| PUT    | `/api/quotes/{id}` | Update a quote |
+| DELETE | `/api/quotes/{id}` | Delete a quote |
+| GET    | `/api/quotes/random` | Get a random quote |
+| GET    | `/api/quotes/random/{count}` | Get multiple random quotes |
+| GET    | `/api/quotes/filter/{length}` | Filter quotes by word count |
+| GET    | `/api/quotes/popular` | Get popular quotes |
+| GET    | `/api/quotes/image/{id}` | Generate image for a quote |
+
+## Authentication Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST   | `/api/register` | Register a new user |
+| POST   | `/api/login` | Login user |
+| POST   | `/api/logout` | Logout user |
+
+## Development Roadmap
+
+- [x] Basic CRUD functionality
+- [x] Random quote generation
+- [x] Quote filtering by length
+- [x] Popularity tracking
+- [ ] Image generation for quotes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</p>  Made with ❤️ for quote enthusiasts everywhere<p align="center">---Project Link: [https://github.com/yourusername/youquote-project](https://github.com/yourusername/youquote-project)## ContactThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+## License5. Open a Pull Request4. Push to the branch (`git push origin feature/amazing-feature`)- [ ] User authentication
+- [ ] User-specific quote management
+- [ ] API rate limiting
+- [ ] Advanced filtering options
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
