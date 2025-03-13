@@ -1,11 +1,11 @@
 # YouQuote - Quote Management API
 
 <p align="center">
-  <img src="https://via.placeholder.com/200x200.png?text=YouQuote" alt="YouQuote Logo" width="200">
+  YouQuote
 </p>
 
 <p align="center">
-  <a href="#features"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"><<img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"></a>
+  <a href="#features"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"></a>
   <a href="#license"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>  <a href="#license"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
   <a href="#built-with"><img src="https://img.shields.io/badge/framework-Laravel-red.svg" alt="Framework"></a><img src="https://img.shields.io/badge/framework-Laravel-red.svg" alt="Framework"></a>
 </p></p>
@@ -102,20 +102,6 @@ php artisan serve
 - [x] Popularity tracking
 - [ ] Image generation for quotes
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-</p>  Made with ❤️ for quote enthusiasts everywhere<p align="center">---Project Link: [https://github.com/yourusername/youquote-project](https://github.com/yourusername/youquote-project)## ContactThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
 ## License5. Open a Pull Request4. Push to the branch (`git push origin feature/amazing-feature`)- [ ] User authentication
