@@ -5,9 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="#features"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"></a> href="#features"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"></a>
+  <a href="#features"><img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"><<img src="https://img.shields.io/badge/status-active-success.svg" alt="Status"></a>
   <a href="#license"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>  <a href="#license"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
-  <a href="#built-with"><img src="https://img.shields.io/badge/framework-Laravel-red.svg" alt="Framework"></a>t-with"><img src="https://img.shields.io/badge/framework-Laravel-red.svg" alt="Framework"></a>
+  <a href="#built-with"><img src="https://img.shields.io/badge/framework-Laravel-red.svg" alt="Framework"></a><img src="https://img.shields.io/badge/framework-Laravel-red.svg" alt="Framework"></a>
 </p></p>
 
 ## About YouQuote## About YouQuote
@@ -65,73 +65,6 @@ php artisan key:generatephp artisan key:generate
 # Run migrations# Run migrations
 php artisan migrate
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</p>  Made with ❤️ for quote enthusiasts everywhere<p align="center">---Project Link: [https://github.com/adilaitelhoucine1/youquote-project](https://github.com/adilaitelhoucine1/youquote-project)## ContactThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.## License5. Open a Pull Request4. Push to the branch (`git push origin feature/amazing-feature`)3. Commit your changes (`git commit -m 'Add some amazing feature'`)2. Create your feature branch (`git checkout -b feature/amazing-feature`)1. Fork the projectContributions are welcome! Please feel free to submit a Pull Request.## Contributing- [ ] Advanced filtering options- [ ] API rate limiting- [ ] User-specific quote management- [ ] User authentication- [ ] Image generation for quotes- [x] Popularity tracking- [x] Quote filtering by length- [x] Random quote generation- [x] Basic CRUD functionality## Development Roadmap| POST   | `/api/logout` | Logout user || POST   | `/api/login` | Login user || POST   | `/api/register` | Register a new user ||--------|----------|-------------|| Method | Endpoint | Description |## Authentication Endpoints| GET    | `/api/quotes/image/{id}` | Generate image for a quote || GET    | `/api/quotes/popular` | Get popular quotes || GET    | `/api/quotes/filter/length/{min}/{max}` | Filter quotes by word count || GET    | `/api/quotes/random/{count}` | Get multiple random quotes || GET    | `/api/quotes/random` | Get a random quote || DELETE | `/api/quotes/{id}` | Delete a quote || PUT    | `/api/quotes/{id}` | Update a quote || POST   | `/api/quotes` | Create a new quote || GET    | `/api/quotes/{id}` | Get a specific quote || GET    | `/api/quotes` | Get all quotes ||--------|----------|-------------|| Method | Endpoint | Description |## API Endpoints```php artisan serve# Start the development serverphp artisan db:seed# Seed the database with sample quotes (optional)# Seed the database with sample quotes (optional)
 php artisan db:seed
 
 # Start the development server
