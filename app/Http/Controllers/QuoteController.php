@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class QuoteController extends Controller
 {
@@ -17,13 +18,25 @@ class QuoteController extends Controller
 
     public function store(Request $request)
     {
+        // if (!Auth::check()) {
+        //     return response()->json(['message' => '🚫 Vous devez être connecté pour créer une citation'], 403);
+        // }
+
+        // if (Gate::denies('create-quote')) {
+        //     return response()->json(['message' => '🚫 Vous n\'êtes pas autorisé à créer cette citation'], 403);
+        // }
+
         $validated = $request->validate([
             'content' => 'required|string',
             'author' => 'nullable|string|max:255',
             'source' => 'nullable|string|max:255',
         ]);
-        
-        $quote = Quote::create($validated);
+        $quote = Quote::create([
+            'content' => $validated['content'],
+            'author' => $validated['author'],
+            'source' => $validated['source'],
+            'user_id' => "5"
+        ]);
         
         return response()->json([
             "message" => "quote est bien cree . $quote->content"
@@ -34,12 +47,16 @@ class QuoteController extends Controller
     {
         $quote->increment('view_count');
         $quote->save();
-        return response()->json($quote, 200);
+        return response()->json($quote, 200);   
     }
 
   
     public function update(Request $request, Quote $quote)
     {
+        if (Gate::denies('update-quote', $quote)) {
+            return response()->json(['message' => '🚫 Vous n\'êtes pas autorisé à modifier cette citation'], 403);
+        }
+    
         $validated = $request->validate([
             'content' => 'sometimes|required|string',
             'author' => 'nullable|string|max:255',
@@ -57,6 +74,10 @@ class QuoteController extends Controller
   
     public function destroy(Quote $quote)
     {
+        if (Gate::denies('delete-quote', $quote)) {
+            return response()->json(['message' => '🚫 Vous n\'êtes pas autorisé à supprimer cette citation'], 403);
+        }
+
         $quote->delete();
         
         return response()->json([

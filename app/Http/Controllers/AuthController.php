@@ -20,6 +20,7 @@ class AuthController extends Controller
             'password' => bcrypt($validatedData['password']),
         ]);
 
+        
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
@@ -35,7 +36,7 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-
+        
         if (!auth()->attempt($validatedData)) {
             return response()->json(['message' => 'Invalid login Infos'], 401);
         }

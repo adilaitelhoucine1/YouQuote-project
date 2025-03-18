@@ -18,8 +18,8 @@ class Quote extends Model
         'content',
         'author',
         'source',
-        'view_count',
         'user_id',
+        'view_count',
     ];
 
     /**
