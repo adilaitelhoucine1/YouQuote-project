@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -19,6 +21,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource("quotes", QuoteController::class);
+    Route::apiResource("tags", TagController::class);
+    Route::apiResource("categories", CategoryController::class);
     Route::get('/quotes/random/{count}', [QuoteController::class, 'random']);
     Route::get('/quotes/GetQuoteWithLength/{length}', [QuoteController::class, 'GetQuoteWithLength']);
     Route::get('/Popular', [QuoteController::class, 'GetPopularQuote']);

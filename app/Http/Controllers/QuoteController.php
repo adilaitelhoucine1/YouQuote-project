@@ -6,6 +6,7 @@ use App\Models\Quote;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 
 class QuoteController extends Controller
 {

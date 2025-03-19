@@ -39,4 +39,12 @@ class Quote extends Model
     {
         return str_word_count($this->content);
     }
+
+    /**
+     * The categories that belong to the quote.
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_quote');
+    }
 }
