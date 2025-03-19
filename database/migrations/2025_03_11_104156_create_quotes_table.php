@@ -18,15 +18,12 @@ return new class extends Migration
             $table->string('source')->nullable();
             $table->unsignedInteger('view_count')->default(0);
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
 
-
- 
     /**
-     * 
-     * 
      * Reverse the migrations.
      */
     public function down(): void

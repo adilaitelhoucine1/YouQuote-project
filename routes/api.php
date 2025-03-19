@@ -20,10 +20,14 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource("quotes", QuoteController::class);
-    Route::apiResource("tags", TagController::class);
-    Route::apiResource("categories", CategoryController::class);
     Route::get('/quotes/random/{count}', [QuoteController::class, 'random']);
     Route::get('/quotes/GetQuoteWithLength/{length}', [QuoteController::class, 'GetQuoteWithLength']);
     Route::get('/Popular', [QuoteController::class, 'GetPopularQuote']);
+});
+
+Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+    Route::apiResource("quotes", QuoteController::class);
+    Route::apiResource("tags", TagController::class);
+    Route::apiResource("categories", CategoryController::class);
+    Route::put('/quotes/approved/{quute}', [QuoteController::class, 'Approved']);
 });

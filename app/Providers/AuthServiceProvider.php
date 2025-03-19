@@ -25,5 +25,6 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-quote', function (User $user, Quote $quote) {
             return $user->id === $quote->user_id;
         });
+
     }
 }

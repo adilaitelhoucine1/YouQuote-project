@@ -115,4 +115,15 @@ class QuoteController extends Controller
             "quote_most_popular" => $quote
         ], 200);
     }
+
+    public function Approved($quote){
+        $quote = Quote::findOrFail($quote);
+        $quote->status = 'approved';
+        $quote->save();
+
+        return response()->json([
+            "message" => "Quote approved successfully",
+            "quote" => $quote
+        ], 200);
+    }
 }
