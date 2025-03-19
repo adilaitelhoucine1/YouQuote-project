@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quote;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -20,21 +21,30 @@ class QuoteController extends Controller
 
     public function store(Request $request)
     {
-
         $validated = $request->validate([
             'content' => 'required|string',
             'author' => 'nullable|string|max:255',
             'source' => 'nullable|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'tags_id' => 'nullable|array',
+            'tags_id.*' => 'exists:tags,id',
         ]);
+
         $quote = Quote::create([
             'content' => $validated['content'],
             'author' => $validated['author'],
             'source' => $validated['source'],
-            'user_id' => Auth::id() 
+            'category_id' => $validated['category_id'],
+            'user_id' => Auth::id(),
         ]);
 
+        if (!empty($validated['tags_id'])) {
+            $quote->tags()->sync($validated['tags_id']);
+        }
+
         return response()->json([
-            "message" => "quote est bien cree . $quote->content"
+            "message" => "Quote created successfully",
+            "quote" => $quote
         ], 201);
     }
 
@@ -47,6 +57,12 @@ class QuoteController extends Controller
 
     public function update(Request $request, Quote $quote)
     {
+        if ($request->has('tags')) {
+           return response()->json([
+            "message" => "ttttttttttttttttags",
+            "quote" => $quote
+        ], 200);
+    }
         $this->authorize('update', $quote);
 
         $validated = $request->validate([
@@ -123,6 +139,16 @@ class QuoteController extends Controller
 
         return response()->json([
             "message" => "Quote approved successfully",
+            "quote" => $quote
+        ], 200);
+    }
+    public function Rejected($quote){
+        $quote = Quote::findOrFail($quote);
+        $quote->status = 'rejected';
+        $quote->save();
+
+        return response()->json([
+            "message" => "Quote Rejected",
             "quote" => $quote
         ], 200);
     }

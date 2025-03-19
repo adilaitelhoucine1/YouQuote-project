@@ -8,20 +8,29 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 class QuotePolicy
 {
-    /**
-     * Determine if the user can update the quote.
-     */
-    public function update(User $user, Quote $quote)
+    use HandlesAuthorization;
+
+    
+    public function update(User $user, Quote $quote): bool
     {
-        return $user->id === $quote->user_id;
+        return $user->id === $quote->user_id || $user->role =="admin";
     }
 
-    /**
-     * Determine if the user can delete the quote.
-     */
-    public function delete(User $user, Quote $quote)
+    
+    public function delete(User $user, Quote $quote): bool
     {
-        return $user->id === $quote->user_id;
+        return $user->id === $quote->user_id ||  $user->role =="admin";
+    }
+
+    public function view(User $user, Quote $quote): bool
+    {
+        return $user->id === $quote->user_id ||  $user->role =="admin";
+    }
+
+   
+    public function create(User $user): bool
+    {
+        return true; 
     }
 }
 

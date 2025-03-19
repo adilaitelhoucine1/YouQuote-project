@@ -20,6 +20,7 @@ class Quote extends Model
         'source',
         'user_id',
         'view_count',
+        'category_id'
     ];
 
     /**
@@ -46,5 +47,13 @@ class Quote extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'category_quote');
+    }
+
+    /**
+     * The tags that belong to the quote.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'quote_tag');
     }
 }
