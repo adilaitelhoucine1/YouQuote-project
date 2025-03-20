@@ -45,8 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
     public function isAdmin()
     {
         return $this->role === 'admin';
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Quote::class, 'favorites', 'user_id', 'quote_id');
     }
 }

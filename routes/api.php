@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/quotes/{quote}', [QuoteController::class, 'update'])->middleware('can:update,quote');
     Route::delete('/quotes/{quote}', [QuoteController::class, 'destroy'])->middleware('can:delete,quote');
     Route::post('/quotes/like/{quote}', [QuoteController::class, 'Like']);
+    Route::post('/quotes/Favorie/{quote}', [QuoteController::class, 'AddFavorite']);
 });
 
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {

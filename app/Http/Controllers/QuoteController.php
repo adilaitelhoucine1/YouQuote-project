@@ -198,4 +198,33 @@ class QuoteController extends Controller
             "quote" => $quote
         ], 200);
     }
+    public function AddFavorite($quoteId)
+    {
+        $quote = Quote::find($quoteId);
+
+        if (!$quote) {
+            return response()->json(["message" => "Quote not found"], 404);
+        }
+
+        $user = Auth::user();
+        $isFavorite = $user->favorites()->where('quote_id', $quoteId)->exists();
+
+        if (!$isFavorite) {
+            $user->favorites()->attach($quoteId);
+
+            return response()->json([
+                "message" => "Quote added to favorites successfully",
+                "favorite" => true,
+                "quote" => $quote
+            ], 200);
+        }
+
+        $user->favorites()->detach($quoteId);
+
+        return response()->json([
+            "message" => "Quote removed from favorites",
+            "favorite" => false,
+            "quote" => $quote
+        ], 200);
+    }
 }
