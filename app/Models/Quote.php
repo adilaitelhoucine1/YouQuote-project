@@ -56,4 +56,12 @@ class Quote extends Model
     {
         return $this->belongsToMany(Tag::class, 'quote_tag');
     }
+
+    /**
+     * The users that liked the quote.
+     */
+    public function likedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'quote_user_likes')->withTimestamps();
+    }
 }

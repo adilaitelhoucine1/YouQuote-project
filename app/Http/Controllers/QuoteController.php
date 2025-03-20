@@ -152,4 +152,50 @@ class QuoteController extends Controller
             "quote" => $quote
         ], 200);
     }
+  
+
+    public function checkIfLiked($quoteId, $userId)
+    {
+        $quote = Quote::findOrFail($quoteId);
+        
+        $isLiked = $quote->likedByUsers()->where('user_id', $userId)->exists();
+        
+        return $isLiked;
+    }
+
+    public function Like($quoteId)
+    {
+        $quote = Quote::find($quoteId);
+
+        if (!$quote) {
+            return response()->json(["message" => "Quote not found"], 404);
+        }
+
+        $user = Auth::user();
+
+   
+        $isLiked = $this->checkIfLiked($quoteId, $user->id);
+
+        if (!$isLiked) {
+            $quote->likedByUsers()->attach($user->id);
+            $quote->likes_count++;
+            $quote->save();
+
+            return response()->json([
+                "message" => "Quote liked successfully",
+                "liked" => true,
+                "quote" => $quote
+            ], 200);
+        }
+
+        $quote->likedByUsers()->detach($user->id);
+        $quote->likes_count--;
+        $quote->save();
+
+        return response()->json([
+            "message" => "Like removed from quote",
+            "liked" => false,
+            "quote" => $quote
+        ], 200);
+    }
 }
