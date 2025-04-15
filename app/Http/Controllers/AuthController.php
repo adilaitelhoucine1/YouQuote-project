@@ -32,7 +32,6 @@ class AuthController extends Controller
 
     public function login(Request $request){
         $validatedData = $request->validate([
-            "message"=> "Login Succefuly",
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
@@ -41,13 +40,17 @@ class AuthController extends Controller
             return response()->json(['message' => 'Invalid login Infos'], 401);
         }
 
-        $token = auth()->user()->createToken('auth_token')->plainTextToken;
+        $user = auth()->user();
+        $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
+            'message' => 'Login Successful',
+            'user' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer',
         ]);
     }
+
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
